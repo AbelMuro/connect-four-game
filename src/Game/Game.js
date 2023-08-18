@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import styles from './styles.module.css';
 import HeaderBar from './HeaderBar';
 import Board from './Board';
+import BackgroundImage from './BackgroundImage';
 
 function Game() {
 
@@ -11,10 +12,14 @@ function Game() {
     }, [])
 
     return(
+        <>
         <main className={styles.container}>
             <HeaderBar/>
             <Board/>
-        </main>
+        </main>     
+        <BackgroundImage/>   
+        </>
+
     )
 }
 

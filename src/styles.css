@@ -5,6 +5,10 @@
 
 :root{
     --font: 'space grotesk';
+    --farthest: 0;
+    --far: 25;
+    --close: 50;
+    --closest: 75;
 }
 
 * {

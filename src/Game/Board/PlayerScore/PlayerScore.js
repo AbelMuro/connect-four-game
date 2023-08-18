@@ -1,8 +1,16 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import styles from './styles.module.css';
 import icons from './icons';
+import { useSelector } from 'react-redux';
 
 function PlayerScore({player}) {
+    const score = useSelector(state => {
+        if(player === 1)
+            return state.playerOneScore;
+        else
+            return state.playerTwoScore;
+    })
+    
     return(
         <section className={styles.container}>
             <img 
@@ -13,7 +21,7 @@ function PlayerScore({player}) {
                 {player === 1 ? 'Player 1' : 'Player 2'}
             </h1>
             <p className={styles.score}>
-                23
+                {score}
             </p>
         </section>
     )
