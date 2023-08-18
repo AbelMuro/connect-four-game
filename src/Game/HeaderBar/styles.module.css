@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+}
+
+.menuButton{
+    width: 86px;
+    height: 39px;
+    border-radius: 20px;
+    border: none;
+    background: #5C2DD5;
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+

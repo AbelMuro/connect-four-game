@@ -1,0 +1,107 @@
+.center_container{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 480px;
+    height: 435px;
+    padding: 70px 40px 60px 40px;
+    border-radius: 40px;
+    border: 3px solid #000;
+    background-color:  #7945FF;
+    box-shadow: 0px 10px 0px 0px #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo{
+    width: 52px;
+    object-fit: contain;
+    margin-bottom: 59px;
+}
+
+.pvpButton{
+    padding: 0px 20px;
+    width: 100%;
+    height: 72px;
+    border-radius: 20px;
+    border: 3px solid #000;
+    background:  #FFCE67;
+    box-shadow: 0px 10px 0px 0px #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    bottom: 0px;
+}
+
+.pvpButton:hover{
+    bottom: 10px;
+    box-shadow: 0px 20px 0px 0px #000;
+}
+
+
+.pvpButton span{
+    color: #000;
+    text-transform: uppercase;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.pvpButton img{
+    width: 82px;
+    object-fit: contain;
+}
+
+.rulesButton{
+    width: 100%;
+    height: 72px;
+    border-radius: 20px;
+    border: 3px solid #000;
+    background-color: #FFF;
+    box-shadow: 0px 10px 0px 0px #000;
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+    text-transform: uppercase;
+    padding-left: 20px;
+    cursor: pointer;
+    position: relative;
+    bottom: 0px;
+}
+
+.rulesButton:hover{
+    bottom: 10px;
+    box-shadow: 0px 20px 0px 0px #000;
+}
+
+
+
+@media(max-width: 520px){
+    .container{
+        padding-top: 203px;
+        padding: 203px 20px 0px 20px;
+        width: 100%;
+        height: 100vh;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        background-color: transparent;
+    }
+}
