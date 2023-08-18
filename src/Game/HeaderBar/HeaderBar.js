@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from './styles.module.css';
+import logo from './icons/logo.svg';
 
-
-// this is where i left off, need to finish styling this component
 function HeaderBar() {
     return( 
         <header className={styles.container}>
             <button className={styles.menuButton}>
                 MENU
             </button>
-            <img className={styles.logo}/>
+            <img className={styles.logo} src={logo}/>
             <button className={styles.restartButton}>
                 Restart
             </button>
