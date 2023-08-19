@@ -15,8 +15,12 @@ function Timer() {
     }, [])
 
     useEffect(() => {
-        containerRef.current.style.backgroundImage = `url(${backgroundImages.playerOneBackground})`
-    }, [])
+        containerRef.current.style.backgroundImage = currentTurn === 'player 1' ? 
+            `url(${backgroundImages.playerOneBackground})` :
+            `url(${backgroundImages.playerTwoBackground})`
+
+        containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black'
+    }, [currentTurn])
 
     return(
         <section className={styles.container} ref={containerRef}>

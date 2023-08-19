@@ -3,5 +3,5 @@ import yellowMarker from './marker-yellow.svg';
 
 export default {
     redMarker,
-    yellowMarker,
+    yellowMarker
 }

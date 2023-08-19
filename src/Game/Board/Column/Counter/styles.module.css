@@ -1,0 +1,6 @@
+.counter{
+    width: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    transition: none;
+}
