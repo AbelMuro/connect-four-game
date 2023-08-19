@@ -2,15 +2,36 @@ import React from 'react';
 import PlayerScore from './PlayerScore';
 import Timer from './Timer';
 import styles from './styles.module.css';
-import images from './images';
+import icons from './icons';
 
+
+//now i need to use framer motion with layoutid
 function Board() {
     return(
         <div className={styles.container}>
             <PlayerScore player={1}/>
             <div className={styles.board}>
-                <img className={styles.boardLayer} src={images['boardLayerBlack']}/>
-                <img className={styles.boardLayer} src={images['boardLayerWhite']}/>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/> 
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
+                <div className={styles.columns}>
+                    <img className={styles.arrow} src={icons['redMarker']}/>
+                </div>
                 <Timer/>
             </div>
             <PlayerScore player={2}/>
