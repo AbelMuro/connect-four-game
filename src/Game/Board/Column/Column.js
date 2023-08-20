@@ -3,11 +3,12 @@ import styles from './styles.module.css';
 import {motion} from 'framer-motion';
 import Counter from './Counter';
 import icons from './icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Column({currentColumn, handleEnter, id}) {
     const [counters, setCounters] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
+    const dispatch = useDispatch();
     const arrowRef = useRef();
 
     const handleAddCounter = () => {

@@ -4,6 +4,8 @@ import {motion} from 'framer-motion';
 import icons from './icons';
 import { useSelector, useDispatch } from 'react-redux';
 
+
+//this is where i left off, i will need to get the winningCounters from the board reducer and use it in this component
 function Counter({column, row ,initial}) {
     const currentTurn = useSelector(state => state.currentTurn);
     const counterRef = useRef();
@@ -22,7 +24,8 @@ function Counter({column, row ,initial}) {
 
     useEffect(() => {
         const player = currentTurn === 'player 1' ? 1 : 2
-        dispatch({type: 'update grid', column, row, player})
+        dispatch({type: 'update board', column, row, player})
+        dispatch({type: 'check board'});
     }, [])
 
     const transition = {
