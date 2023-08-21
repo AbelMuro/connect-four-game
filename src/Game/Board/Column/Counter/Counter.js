@@ -12,6 +12,8 @@ function Counter({column, row ,initial}) {
     const winningCounters = useSelector(state => state.board.winningCounters);
     const counterRef = useRef();
     const dispatch = useDispatch();
+    console.log(row, column)
+
 
     useEffect(() => {
         if(currentTurn === 'player 1')
@@ -35,9 +37,6 @@ function Counter({column, row ,initial}) {
         
         winningCounters.forEach((counters) => {
             if(counters[0] === row && counters[1] === column){
-                console.log(row, column)
-                console.log(counters)
-                console.log('')
                 setDisplayWhiteCircle(true);
                 dispatch({type: 'end game'});
             }           

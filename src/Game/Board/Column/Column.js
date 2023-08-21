@@ -35,17 +35,17 @@ function Column({currentColumn, handleEnter, id}) {
         <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter} ref={columnRef}>
             {currentColumn === id && <motion.img className={styles.arrow} ref={arrowRef} layoutId='arrow'/>}
             {counters >= 1 && 
-                <Counter column={currentColumn} row={0} initial={{y: -430}}/>}
+                <Counter column={currentColumn} row={5} initial={{y: -430}}/>}
             {counters >= 2 && 
-                <Counter column={currentColumn} row={1} initial={{y: -370}}/>}
+                <Counter column={currentColumn} row={4} initial={{y: -370}}/>}
             {counters >= 3 && 
-                <Counter column={currentColumn} row={2} initial={{y: -280}}/>}
+                <Counter column={currentColumn} row={3} initial={{y: -280}}/>}
             {counters >= 4 && 
-                <Counter column={currentColumn} row={3} initial={{y: -180}}/>}
+                <Counter column={currentColumn} row={2} initial={{y: -180}}/>}
             {counters >= 5 && 
-                <Counter column={currentColumn} row={4} initial={{y: -100}}/>}
+                <Counter column={currentColumn} row={1} initial={{y: -100}}/>}
             {counters >= 6 && 
-                <Counter column={currentColumn} row={5} initial={{y: -20}}/>}
+                <Counter column={currentColumn} row={0} initial={{y: -20}}/>}
         </div>
     )
 }

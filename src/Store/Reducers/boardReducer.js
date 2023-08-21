@@ -6,7 +6,7 @@ function traverseBoard(grid){
     for(let row = 5; row >= 0; row--){
         for(let columnOne = 0; columnOne <= 3 ; columnOne++){
             for(let columnTwo = columnOne; columnTwo <= columnOne + 3; columnTwo++){
-                if(!grid[row] || !grid[row][columnTwo]){
+                if(!grid[row][columnTwo]){
                     connectFour.splice(0, connectFour.length);
                     winningCounters.splice(0, winningCounters.length); 
                     break;                    
@@ -34,7 +34,7 @@ function traverseBoard(grid){
     for(let row = 5; row >= 3; row--){
         for(let column = 0; column <= 6; column++){
             for(let vertical = 0; vertical <= 3; vertical++){
-                if(!grid[row - vertical] || !grid[row - vertical][column]){
+                if(!grid[row - vertical][column]){
                     connectFour.splice(0, connectFour.length);
                     winningCounters.splice(0, winningCounters.length); 
                     break; 
@@ -63,7 +63,7 @@ function traverseBoard(grid){
     for(let row = 5; row >= 3; row--){              
         for(let column = 0; column <= 3; column++){ 
             for(let diagonal = 0; diagonal <= 3; diagonal++){       
-                if(!grid[row - diagonal] || !grid[row - diagonal][column + diagonal]){
+                if(!grid[row - diagonal][column + diagonal]){
                     connectFour.splice(0, connectFour.length);
                     winningCounters.splice(0, winningCounters.length); 
                     break; 
@@ -91,7 +91,7 @@ function traverseBoard(grid){
         for(let row = 5; row >= 3; row--){              
             for(let column = 6; column >= 3; column--){ 
                 for(let diagonal = 0; diagonal <= 3; diagonal++){       
-                    if(!grid[row - diagonal] || !grid[row - diagonal][column - diagonal]){
+                    if(!grid[row - diagonal][column - diagonal]){
                         connectFour.splice(0, connectFour.length);
                         winningCounters.splice(0, winningCounters.length); 
                         break; 
@@ -117,12 +117,6 @@ function traverseBoard(grid){
         return [];
 }
         
-
-
-//this is where i left off, i will need to update the board correctly in the  case 'update board'
-
-
-
 
 export default function boardReducer(board={
         board: 

@@ -6,6 +6,8 @@ import images from './images'
 import Column from './Column';
 
 
+
+// the issue is that current column is always changing  when you hover over the component
 function Board() {
     const [currentColumn, setCurrentColumn] = useState();
 
