@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, memo} from 'react';
+import React, {useState, useEffect, useRef, memo} from 'react';
 import styles from './styles.module.css';
 import {motion} from 'framer-motion';
 import icons from './icons';
@@ -7,7 +7,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //this is where i left off, i will need to get the winningCounters from the board reducer and use it in this component
 function Counter({column, row ,initial}) {
+    const [displayWhiteCircle, setDisplayWhiteCircle] = useState(false)
     const currentTurn = useSelector(state => state.currentTurn);
+    const winningCounters = useSelector(state => state.board.winningCounters);
     const counterRef = useRef();
     const dispatch = useDispatch();
 
@@ -28,6 +30,20 @@ function Counter({column, row ,initial}) {
         dispatch({type: 'check board'});
     }, [])
 
+    useEffect(() => {
+        if(!winningCounters.length) return;
+        
+        winningCounters.forEach((counters) => {
+            if(counters[0] === row && counters[1] === column){
+                console.log(row, column)
+                console.log(counters)
+                console.log('')
+                setDisplayWhiteCircle(true);
+                dispatch({type: 'end game'});
+            }           
+        })
+    }, [winningCounters])
+
     const transition = {
         y: {
             type: 'spring',
@@ -38,12 +54,11 @@ function Counter({column, row ,initial}) {
     }
 
     return(
-        <motion.img 
-            initial={initial} 
-            animate={{y: 0}} 
-            className={styles.counter} 
-            transition={transition}
-            ref={counterRef}/>
+        <motion.div className={styles.container} initial={initial} animate={{y: 0}} transition={transition}>
+            <img className={styles.counter} ref={counterRef}/> 
+            {displayWhiteCircle && <div className={styles.winningCircle}></div>}           
+        </motion.div>
+
     )
 }
 

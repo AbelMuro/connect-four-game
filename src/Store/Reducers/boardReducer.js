@@ -119,6 +119,11 @@ function traverseBoard(grid){
         
 
 
+//this is where i left off, i will need to update the board correctly in the  case 'update board'
+
+
+
+
 export default function boardReducer(board={
         board: 
             [

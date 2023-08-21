@@ -3,13 +3,14 @@ import styles from './styles.module.css';
 import {motion} from 'framer-motion';
 import Counter from './Counter';
 import icons from './icons';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Column({currentColumn, handleEnter, id}) {
     const [counters, setCounters] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
-    const dispatch = useDispatch();
+    const gameOver = useSelector(state => state.gameOver);
     const arrowRef = useRef();
+    const columnRef = useRef();
 
     const handleAddCounter = () => {
         setCounters(counters + 1);
@@ -24,21 +25,27 @@ function Column({currentColumn, handleEnter, id}) {
             arrowRef.current.src = icons['yellowMarker']
     }, [currentColumn, currentTurn])
 
+    useEffect(() => {
+        if(!gameOver) return;
+
+        columnRef.current.style.pointerEvents = 'none';
+    },[gameOver])
+
     return(                
-        <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter}>
+        <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter} ref={columnRef}>
             {currentColumn === id && <motion.img className={styles.arrow} ref={arrowRef} layoutId='arrow'/>}
             {counters >= 1 && 
-                <Counter column={currentColumn} row={5} initial={{y: -430}}/>}
+                <Counter column={currentColumn} row={0} initial={{y: -430}}/>}
             {counters >= 2 && 
-                <Counter column={currentColumn} row={4} initial={{y: -370}}/>}
+                <Counter column={currentColumn} row={1} initial={{y: -370}}/>}
             {counters >= 3 && 
-                <Counter column={currentColumn} row={3} initial={{y: -280}}/>}
+                <Counter column={currentColumn} row={2} initial={{y: -280}}/>}
             {counters >= 4 && 
-                <Counter column={currentColumn} row={2} initial={{y: -180}}/>}
+                <Counter column={currentColumn} row={3} initial={{y: -180}}/>}
             {counters >= 5 && 
-                <Counter column={currentColumn} row={1} initial={{y: -100}}/>}
+                <Counter column={currentColumn} row={4} initial={{y: -100}}/>}
             {counters >= 6 && 
-                <Counter column={currentColumn} row={0} initial={{y: -20}}/>}
+                <Counter column={currentColumn} row={5} initial={{y: -20}}/>}
         </div>
     )
 }
