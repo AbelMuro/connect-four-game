@@ -23,7 +23,7 @@ function Rules() {
                 initial={{scale: 0}} 
                 animate={{
                     scale: 1, 
-                    transition: {scale: {type: 'spring', stiffness: 150, damping: 4 }}}}>
+                    transition: {scale: {type: 'spring', stiffness: 150, damping: 6 }}}}>
                 <h1 className={styles.title}>
                     RULES
                 </h1>

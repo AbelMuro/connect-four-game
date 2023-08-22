@@ -6,3 +6,10 @@
     gap: 56px;
     margin: 53px auto -30px auto;
 }
+
+@media(max-width: 1160px) {
+    .container{
+        width: 95%;
+        gap: 32px;
+    }
+}

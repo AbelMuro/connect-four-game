@@ -5,8 +5,7 @@
 }
 
 .menuButton, .restartButton{
-    width: 86px;
-    height: 39px;
+    text-transform: uppercase;
     border-radius: 20px;
     border: none;
     background: #5C2DD5;
@@ -17,6 +16,17 @@
     font-weight: 700;
     line-height: normal;
     cursor: pointer;
+}
+
+.menuButton{
+    width: 86px;
+    height: 39px;
+}
+
+
+.restartButton{
+    width: 108px;
+    height: 39px;
 }
 
 .logo{
@@ -81,16 +91,30 @@
     line-height: normal;
     cursor: pointer;
     margin-bottom: 30px;
+    position: relative;
+    bottom: 0px;
 }
 
 .continue, .restart{
-    background: #FFF;
-    color: black
+    background-color: #FFF;
+    color: black;
+}
+
+.continue:hover, .restart:hover{
+    bottom: 10px;
+    box-shadow: 0px 20px 0px 0px #5C2DD5;
+    border-color: #5C2DD5;
 }
 
 .quit{
     background: #FD6687;
     color: white;
+}
+
+.quit:hover{
+    bottom: 10px;
+    box-shadow: 0px 20px 0px 0px #5C2DD5;
+    border-color: #5C2DD5;
 }
 
 

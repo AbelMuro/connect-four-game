@@ -5,10 +5,27 @@ import StatusBoard from './StatusBoard';
 import styles from './styles.module.css';
 import images from './images'
 import Column from './Column';
+import {motion} from 'framer-motion';
 
 
 function Board() {
     const [hoverColumn, setHoverColumn] = useState();
+
+    const variants = {
+        hidden: {
+            scale: 0
+        },
+        show: {
+            scale: 1,
+            transition: {
+                scale: {
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 5,                    
+                }
+            }
+        }
+    }
 
     const handleEnter = (e) => {
         const id = Number(e.target.getAttribute('id'));
@@ -25,9 +42,9 @@ function Board() {
     }
 
     return(
-        <div className={styles.container}>
+        <motion.div className={styles.container} initial={'hidden'} animate={'show'} transition={{staggerChildren: 0.6}}>
             <PlayerOneScore/>
-            <div className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter}>
+            <motion.div className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter} variants={variants}>
                 <img src={images['blackLayer']} className={styles.layer}/>
                 <img src={images['whiteLayer']} className={styles.layer}/>
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={0} />
@@ -38,9 +55,9 @@ function Board() {
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={5} />
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={6} />
                 <StatusBoard />
-            </div>
+            </motion.div>
             <PlayerTwoScore/>
-        </div>
+        </motion.div>
     )
 }
 

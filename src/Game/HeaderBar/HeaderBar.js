@@ -2,15 +2,45 @@ import React, {useState, useEffect, useRef} from 'react';
 import styles from './styles.module.css';
 import logo from './icons/logo.svg';
 import { useNavigate } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {motion} from 'framer-motion';
 
 function HeaderBar() {
     const [open, setOpen] = useState();
+    const currentTurn = useSelector(state => state.currentTurn);
     const dispatch = useDispatch();
     const overlayRef = useRef();
     const dialogRef = useRef();
     const navigate = useNavigate();
+
+    const variants = {
+        hidden: {
+            scale: 0
+        },
+        show: {
+            scale: 1,
+            transition: {scale: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 4,
+            }}
+        }
+    }
+
+    const handleEnter = (e) => {
+        if(currentTurn === 'player 1')
+            e.target.style.backgroundColor = '#FD6687';
+        else{
+            e.target.style.backgroundColor = '#FFCE67';
+            e.target.style.color = '#000000'
+        }
+            
+    }
+
+    const handleLeave = (e) => {
+        e.target.style.backgroundColor = '';
+        e.target.style.color = '';
+    }
 
     const handleMenu = () => {
         setOpen(!open);
@@ -67,17 +97,33 @@ function HeaderBar() {
         }
     }, [open])
 
+
     return(
         <>
-            <header className={styles.container}>
-                <button className={styles.menuButton} onClick={handleMenu}>
+            <motion.header 
+                className={styles.container} 
+                initial='hidden' 
+                animate='show'
+                transition={{staggerChildren: 0.6}}
+                >
+                <motion.button 
+                    className={styles.menuButton} 
+                    onClick={handleMenu} 
+                    variants={variants}
+                    onMouseEnter={handleEnter}
+                    onMouseLeave={handleLeave}>
                     MENU
-                </button>
-                <img className={styles.logo} src={logo}/>
-                <button className={styles.restartButton} onClick={handleRestart}>
+                </motion.button>
+                <motion.img className={styles.logo} src={logo} variants={variants}/>
+                <motion.button 
+                    className={styles.restartButton} 
+                    onClick={handleRestart} 
+                    variants={variants}
+                    onMouseEnter={handleEnter}
+                    onMouseLeave={handleLeave}>
                     Restart
-                </button>
-            </header>    
+                </motion.button>
+            </motion.header>    
             <div className={styles.overlay} ref={overlayRef}>
                 <dialog open={true} className={styles.dialog} ref={dialogRef}>
                     <h1 className={styles.title}>

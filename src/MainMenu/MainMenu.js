@@ -27,7 +27,7 @@ function MainMenu() {
             <motion.main 
                 className={styles.container} 
                 initial={{scale: 0}}
-                animate={{scale: 1, transition: {scale: {type: 'spring', stiffness: 150, damping: 4}}}}>
+                animate={{scale: 1, transition: {scale: {type: 'spring', stiffness: 150, damping: 6}}}}>
                     <img className={styles.logo} src={icons['logo']}/>
                     <button className={styles.pvpButton} onClick={handleStart}>
                         <span>

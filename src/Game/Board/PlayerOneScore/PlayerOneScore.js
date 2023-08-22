@@ -2,12 +2,27 @@ import React, {useEffect} from 'react';
 import styles from './styles.module.css';
 import icon from './icons/player-one.svg';
 import {useSelector, useDispatch} from 'react-redux';
+import {motion} from 'framer-motion';
 
 function PlayerOneScore() {
     const playerOneScore = useSelector(state => state.playerOneScore);
     const winningPlayer = useSelector(state => state.board.winningPlayer);
     const gameOver = useSelector(state => state.gameOver);
     const dispatch = useDispatch();
+
+    const variants = {
+        hidden: {
+            scale: 0,
+        },
+        show: {
+            scale: 1,
+            transition: {scale: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 5
+            }}
+        }
+    }
 
     useEffect(() => {
         if(!gameOver) return;
@@ -18,7 +33,7 @@ function PlayerOneScore() {
     }, [gameOver])
 
     return(
-        <section className={styles.container}>
+        <motion.section className={styles.container} variants={variants}>
             <img src={icon} className={styles.playerIcon}/>
             <h1 className={styles.title}>
                 Player 1
@@ -26,7 +41,7 @@ function PlayerOneScore() {
             <p className={styles.score}>
                 {playerOneScore}
             </p>
-        </section>
+        </motion.section>
     )
 }
 

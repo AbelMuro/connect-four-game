@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './styles.module.css';
 import {useSelector} from 'react-redux';
+import {motion} from 'framer-motion';
 
 function BackgroundImage() {
     const winningPlayer = useSelector(state => state.board.winningPlayer);
@@ -16,7 +17,11 @@ function BackgroundImage() {
     }, [gameOver])
 
     return(
-        <div className={styles.container} ref={containerRef}></div>
+        <motion.div 
+            initial={{y: 100}}
+            animate={{y: 0}}
+            className={styles.container} 
+            ref={containerRef}></motion.div>
     )
 }
 

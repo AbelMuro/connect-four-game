@@ -39,3 +39,22 @@
     font-weight: 700;
     line-height: normal;
 }
+
+@media(max-width: 1020px){
+    .container{
+        width: 272px;
+        height: 100px;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding: 0px 44px 0px 20px;
+        justify-self: flex-start;
+    }
+
+    .playerIcon{
+        right: -25px;
+        top: 0;
+        bottom: 0;
+        left: initial;
+        margin: auto;
+    }
+}
