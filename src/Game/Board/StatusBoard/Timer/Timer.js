@@ -6,24 +6,21 @@ import {useSelector, useDispatch} from 'react-redux';
 function Timer() {
     const [timer, setTimer] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
+    const reset = useSelector(state => state.reset);
     const pause = useSelector(state => state.pause);
     const containerRef = useRef();
     const timerRef = useRef();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(pause){
+        if(pause)
             clearInterval(timerRef.current);
-            return;
-        }
-
-        if(timerRef.current) {
-            clearInterval(timerRef.current);
-        }
-        timerRef.current = setInterval(() => {
-            setTimer(prevState => prevState + 1);
-        }, 1000)
-    }, [currentTurn, pause])
+        
+        if(reset){
+            setTimer(0);
+            dispatch({type: 'cancel reset'});
+        }        
+    }, [pause, reset])
 
     useEffect(() => {
         if(timer === 30){
@@ -33,12 +30,21 @@ function Timer() {
     }, [timer])
 
     useEffect(() => {
+        if(timerRef.current) {
+            clearInterval(timerRef.current);
+        }
+        timerRef.current = setInterval(() => {
+            setTimer(prevState => prevState + 1);
+        }, 1000)
+        setTimer(0);
+    }, [currentTurn])
+
+    useEffect(() => {
         containerRef.current.style.backgroundImage = currentTurn === 'player 1' ? 
             `url(${backgroundImages.playerOneBackground})` :
             `url(${backgroundImages.playerTwoBackground})`
 
         containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black';
-        setTimer(0)
     }, [currentTurn])
 
 

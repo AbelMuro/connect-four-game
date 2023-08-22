@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
 
-//this is where i left off, i will need to finish the functionality for the restart button
-
 function HeaderBar() {
     const [open, setOpen] = useState();
     const dispatch = useDispatch();
@@ -16,6 +14,27 @@ function HeaderBar() {
 
     const handleMenu = () => {
         setOpen(!open);
+    }
+
+    const handleRestart = () => {
+        dispatch({type: 'reset turn'});
+        dispatch({type: 'reset board'});
+        dispatch({type: 'clear counters'});
+        dispatch({type: 'start game'});                         //just in case the user clicks on the restart button after the game ends (this happens when a player wins)
+        dispatch({type: 'reset player one score'});
+        dispatch({type: 'reset player two score'});
+        dispatch({type: 'reset'});                              //resets the timer and all the counters on the board
+    }
+
+    const handleMenuRestart = () => {
+        dispatch({type: 'reset turn'});
+        dispatch({type: 'reset board'});
+        dispatch({type: 'clear counters'});
+        dispatch({type: 'start game'});                         //just in case the user clicks on the restart button after the game ends (this happens when a player wins)
+        dispatch({type: 'reset player one score'});
+        dispatch({type: 'reset player two score'});
+        dispatch({type: 'reset'});                             //resets the timer and all the counters on the board
+        setOpen(false);
     }
 
     const handleQuit = () => {
@@ -55,7 +74,7 @@ function HeaderBar() {
                     MENU
                 </button>
                 <img className={styles.logo} src={logo}/>
-                <button className={styles.restartButton}>
+                <button className={styles.restartButton} onClick={handleRestart}>
                     Restart
                 </button>
             </header>    
@@ -67,7 +86,7 @@ function HeaderBar() {
                     <button className={styles.continue} onClick={handleMenu}>
                         continue game
                     </button>
-                    <button className={styles.restart}>
+                    <button className={styles.restart} onClick={handleMenuRestart}>
                         restart
                     </button>
                     <button className={styles.quit} onClick={handleQuit}>

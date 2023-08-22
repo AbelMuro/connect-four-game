@@ -9,7 +9,7 @@ function DisplayWinner() {
     const handlePlayAgain = () => {
         dispatch({type: 'reset turn'});
         dispatch({type: 'reset board'});
-        dispatch({type: 'start game'})
+        dispatch({type: 'start game'});
     }
 
     return(

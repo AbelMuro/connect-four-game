@@ -39,7 +39,6 @@ function Counter({column, row ,initial}) {
     }, [])
 
     useEffect(() => {
-
         winningCounters.forEach((counters) => {
             if(counters[0] === row && counters[1] === column)
                 setDisplayWhiteCircle(true);

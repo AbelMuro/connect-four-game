@@ -8,9 +8,12 @@ import { useSelector, useDispatch } from 'react-redux';
 function Column({hoverColumn, handleEnter, id}) {
     const [counters, setCounters] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
+    const board = useSelector(state => state.board);
     const gameOver = useSelector(state => state.gameOver);
+    const reset = useSelector(state => state.reset);
     const arrowRef = useRef();
     const columnRef = useRef();
+    const dispatch = useDispatch();
 
     const handleAddCounter = () => {
         setCounters(counters + 1);
@@ -29,8 +32,16 @@ function Column({hoverColumn, handleEnter, id}) {
     useEffect(() => {
         columnRef.current.style.pointerEvents = gameOver ? 'none' : '';
         if(!gameOver)
-            setCounters(0)
+            setCounters(0);
     },[gameOver])
+
+    useEffect(() => {
+        if(reset){
+            setCounters(0);
+            dispatch({type: 'cancel reset'});
+        }
+            
+    }, [reset])
 
     return(                
         <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter} ref={columnRef}>
