@@ -1,3 +1,5 @@
+//i will need to return connectFour from the following function
+
 function traverseBoard(grid){
     let connectFour = [];
     let winningCounters = []
@@ -25,7 +27,7 @@ function traverseBoard(grid){
                     break;
                 }
                 if(connectFour.length === 4)
-                    return winningCounters; 
+                    return {winningCounters, winningPlayer: connectFour[0]}; 
             }
         }
     }
@@ -53,7 +55,7 @@ function traverseBoard(grid){
                     break;
                 }
                 if(connectFour.length === 4)
-                    return winningCounters;   
+                    return {winningCounters, winningPlayer: connectFour[0]};  
             }            
         }
     }
@@ -82,7 +84,7 @@ function traverseBoard(grid){
                     break;
                 } 
                 if(connectFour.length === 4)
-                    return winningCounters;  
+                    return {winningCounters, winningPlayer: connectFour[0]}; 
             }
         }
     }
@@ -110,15 +112,15 @@ function traverseBoard(grid){
                         break;
                     } 
                     if(connectFour.length === 4)
-                        return winningCounters;  
+                        return {winningCounters, winningPlayer: connectFour[0]};  
                 }
             }
         }
-        return [];
+        return {winningCounters: [], winningPlayer: ''};
 }
         
 
-export default function boardReducer(board={
+export default function boardReducer(board = {
         board: 
             [
             [0,0,0,0,0,0,0],
@@ -128,7 +130,8 @@ export default function boardReducer(board={
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]
         ],
-        winningCounters: []
+        winningCounters: [],
+        winningPlayer: ''
 }, action) {
 
     const currentBoard = board.board;
@@ -152,12 +155,32 @@ export default function boardReducer(board={
                     })
                 }
             })
-            return {board: updatedBoard, winningCounters: currentWinningCounters}
+            return {board: updatedBoard, winningCounters: currentWinningCounters, winningPlayer: ''}
 
         case 'check board':
-           const updatedWinningCounters = traverseBoard(currentBoard)
-           return {board: currentBoard, winningCounters: updatedWinningCounters};
+           const {winningCounters, winningPlayer} = traverseBoard(currentBoard);
+           return {board: currentBoard, winningCounters, winningPlayer};
 
+        case 'reset board': 
+            return {
+                board: [
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0]
+                ],
+                winningCounters: [],
+                winningPlayer: ''
+        }
+
+        case 'set winning player':
+            return {
+                board: currentBoard,
+                winningCounters: [],
+                winningPlayer: action.player
+            }
         default:
             return board;
             

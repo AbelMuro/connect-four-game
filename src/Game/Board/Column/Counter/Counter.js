@@ -4,16 +4,20 @@ import {motion} from 'framer-motion';
 import icons from './icons';
 import { useSelector, useDispatch } from 'react-redux';
 
-
-//this is where i left off, i will need to get the winningCounters from the board reducer and use it in this component
 function Counter({column, row ,initial}) {
     const [displayWhiteCircle, setDisplayWhiteCircle] = useState(false)
     const currentTurn = useSelector(state => state.currentTurn);
     const winningCounters = useSelector(state => state.board.winningCounters);
     const counterRef = useRef();
     const dispatch = useDispatch();
-    console.log(row, column)
 
+    const transition = {
+        y: {
+            type: 'spring',
+            stiffness: 200,
+            damping: 40,
+        }
+    }
 
     useEffect(() => {
         if(currentTurn === 'player 1')
@@ -23,34 +27,26 @@ function Counter({column, row ,initial}) {
     }, [])
 
     useEffect(() => {
-        dispatch({type: 'change turn'});
-    }, [])
-
-    useEffect(() => {
         const player = currentTurn === 'player 1' ? 1 : 2
         dispatch({type: 'update board', column, row, player})
         dispatch({type: 'check board'});
     }, [])
 
     useEffect(() => {
-        if(!winningCounters.length) return;
-        
+        if(!winningCounters.length) {
+            dispatch({type: 'change turn'});
+        }        
+    }, [])
+
+    useEffect(() => {
+
         winningCounters.forEach((counters) => {
-            if(counters[0] === row && counters[1] === column){
+            if(counters[0] === row && counters[1] === column)
                 setDisplayWhiteCircle(true);
-                dispatch({type: 'end game'});
-            }           
+                dispatch({type: 'end game'})
         })
     }, [winningCounters])
 
-    const transition = {
-        y: {
-            type: 'spring',
-            stiffness: 400,
-            damping: 40,
-            ease: 'easeInOut'
-        }
-    }
 
     return(
         <motion.div className={styles.container} initial={initial} animate={{y: 0}} transition={transition}>

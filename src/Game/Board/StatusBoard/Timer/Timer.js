@@ -1,26 +1,46 @@
 import React, {useState, useEffect, memo, useRef} from 'react';
 import styles from './styles.module.css';
 import backgroundImages from './images';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 function Timer() {
     const [timer, setTimer] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
+    const pause = useSelector(state => state.pause);
     const containerRef = useRef();
+    const timerRef = useRef();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setInterval(() => {
+        if(pause){
+            clearInterval(timerRef.current);
+            return;
+        }
+
+        if(timerRef.current) {
+            clearInterval(timerRef.current);
+        }
+        timerRef.current = setInterval(() => {
             setTimer(prevState => prevState + 1);
         }, 1000)
-    }, [])
+    }, [currentTurn, pause])
+
+    useEffect(() => {
+        if(timer === 30){
+            dispatch({type: 'set winning player', player: currentTurn === 'player 1' ? 2 : 1});            
+            dispatch({type: 'end game'});
+        }
+    }, [timer])
 
     useEffect(() => {
         containerRef.current.style.backgroundImage = currentTurn === 'player 1' ? 
             `url(${backgroundImages.playerOneBackground})` :
             `url(${backgroundImages.playerTwoBackground})`
 
-        containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black'
+        containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black';
+        setTimer(0)
     }, [currentTurn])
+
 
     return(
         <section className={styles.container} ref={containerRef}>

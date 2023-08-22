@@ -1,17 +1,19 @@
-import playerOneScoreReducer from './playerOneScoreReducer.js';
-import playerTwoScoreReducer from './playerTwoScoreReducer.js';
+import playerOneReducer from './playerOneReducer.js';
+import playerTwoReducer from './playerTwoReducer.js';
 import currentTurnReducer from './currentTurnReducer.js';
 import boardReducer from './boardReducer.js';
 import gameOverReducer from './gameOverReducer.js';
+import pauseReducer from './pauseReducer.js';
 import { combineReducers } from 'redux';
 
 
 const rootReducer = combineReducers({
-    playerOneScore: playerOneScoreReducer,
-    playerTwoScore: playerTwoScoreReducer,
+    playerOneScore: playerOneReducer,
+    playerTwoScore: playerTwoReducer,
     currentTurn: currentTurnReducer,
     board: boardReducer,
-    game: gameOverReducer
+    gameOver: gameOverReducer,
+    pause: pauseReducer,
 })
 
 export default rootReducer

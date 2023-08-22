@@ -1,0 +1,59 @@
+.container{
+    width: 285px;
+    height: 160px;
+    border-radius: 20px;
+    border: 3px solid #000;
+    background-color: #FFF;
+    box-shadow: 0px 10px 0px 0px #000;
+    position: absolute;
+    bottom: -110px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: var(--close);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px 0px;
+    justify-content: center;
+}
+
+.playerWon{
+    text-transform: uppercase;
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.title{
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font);
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.playAgainButton{
+    text-transform: uppercase;
+    border-radius: 20px;
+    background-color: #5C2DD5;
+    width: 130px;
+    height: 39px;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+}
