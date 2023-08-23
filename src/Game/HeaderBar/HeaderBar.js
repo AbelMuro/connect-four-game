@@ -46,28 +46,29 @@ function HeaderBar() {
         setOpen(!open);
     }
 
-    const handleRestart = () => {
+    const resetAllStates = () => {
         dispatch({type: 'reset turn'});
         dispatch({type: 'reset board'});
         dispatch({type: 'clear counters'});
         dispatch({type: 'start game'});                         //just in case the user clicks on the restart button after the game ends (this happens when a player wins)
         dispatch({type: 'reset player one score'});
         dispatch({type: 'reset player two score'});
+    }
+
+    const handleRestart = () => {
+        resetAllStates();
         dispatch({type: 'reset'});                              //resets the timer and all the counters on the board
     }
 
     const handleMenuRestart = () => {
-        dispatch({type: 'reset turn'});
-        dispatch({type: 'reset board'});
-        dispatch({type: 'clear counters'});
-        dispatch({type: 'start game'});                         //just in case the user clicks on the restart button after the game ends (this happens when a player wins)
-        dispatch({type: 'reset player one score'});
-        dispatch({type: 'reset player two score'});
+        resetAllStates();
         dispatch({type: 'reset'});                             //resets the timer and all the counters on the board
         setOpen(false);
     }
 
     const handleQuit = () => {
+        resetAllStates();
+        dispatch({type: 'cancel reset'}); 
         navigate('/')
     }
 

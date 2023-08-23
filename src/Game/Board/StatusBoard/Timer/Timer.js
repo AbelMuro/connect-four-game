@@ -10,17 +10,8 @@ function Timer() {
     const pause = useSelector(state => state.pause);
     const containerRef = useRef();
     const timerRef = useRef();
+    const skipFirstRender = useRef(true);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if(pause)
-            clearInterval(timerRef.current);
-        
-        if(reset){
-            setTimer(0);
-            dispatch({type: 'cancel reset'});
-        }        
-    }, [pause, reset])
 
     useEffect(() => {
         if(timer === 30){
@@ -30,13 +21,31 @@ function Timer() {
     }, [timer])
 
     useEffect(() => {
-        if(timerRef.current) {
+        if(reset){
+            setTimer(0);
+            dispatch({type: 'cancel reset'});
+        }        
+    }, [reset])
+
+    useEffect(() => {
+        if(pause){
             clearInterval(timerRef.current);
+            timerRef.current = null;
         }
+        else if(!timerRef.current){
+            timerRef.current = setInterval(() => {
+                setTimer(prevState => prevState + 1);
+            }, 1000)
+        }
+    }, [pause])
+
+    useEffect(() => {
+        if(timerRef.current) 
+            clearInterval(timerRef.current);
         timerRef.current = setInterval(() => {
             setTimer(prevState => prevState + 1);
         }, 1000)
-        setTimer(0);
+        setTimer(0);            
     }, [currentTurn])
 
     useEffect(() => {
@@ -46,7 +55,6 @@ function Timer() {
 
         containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black';
     }, [currentTurn])
-
 
     return(
         <section className={styles.container} ref={containerRef}>

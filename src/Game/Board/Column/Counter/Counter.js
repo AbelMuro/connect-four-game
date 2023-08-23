@@ -18,12 +18,12 @@ function Counter({column, row ,initial}) {
             damping: 40,
         }
     }
-
+    //i will need to add a class to this component instead of using inline style
     useEffect(() => {
         if(currentTurn === 'player 1')
-            counterRef.current.src = icons['redCounter'];
+            counterRef.current.classList.add(styles.redCounter);
         else
-            counterRef.current.src = icons['yellowCounter'];
+            counterRef.current.classList.add(styles.yellowCounter);
     }, [])
 
     useEffect(() => {

@@ -3,13 +3,13 @@ import PlayerOneScore from './PlayerOneScore';
 import PlayerTwoScore from './PlayerTwoScore';
 import StatusBoard from './StatusBoard';
 import styles from './styles.module.css';
-import images from './images'
 import Column from './Column';
 import {motion} from 'framer-motion';
-
+import useMediaQuery from '../../Hooks/useMediaQuery.js'
 
 function Board() {
     const [hoverColumn, setHoverColumn] = useState();
+    const mobile = useMediaQuery('(max-width: 680px)');
 
     const variants = {
         hidden: {
@@ -44,9 +44,9 @@ function Board() {
     return(
         <motion.div className={styles.container} initial={'hidden'} animate={'show'} transition={{staggerChildren: 0.6}}>
             <PlayerOneScore/>
-            <motion.div className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter} variants={variants}>
-                <img src={images['blackLayer']} className={styles.layer}/>
-                <img src={images['whiteLayer']} className={styles.layer}/>
+            <motion.div layout className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter} variants={variants}>
+                <img className={styles.layer}/>
+                <img className={styles.layer}/>
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={0} />
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={1} />
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={2} />

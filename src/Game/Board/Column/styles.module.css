@@ -19,3 +19,22 @@
     margin: auto;
     transition: none;
 }
+
+
+@media(max-width: 1020px){
+    .arrow{
+        top: -57px;
+    }
+}
+
+@media(max-width: 680px){
+    .columns{
+        height: 266.65px;
+        gap: 12.5px;
+    }
+
+    .arrow{
+        width: 25px;
+        top: -35px;
+    }
+}

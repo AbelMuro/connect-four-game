@@ -37,3 +37,11 @@
     font-weight: 700;
     line-height: normal;
 }
+
+@media(max-width: 680px){
+    .container{
+        width: 191px;
+        height: 150px;
+        bottom: -130px;
+    }
+}

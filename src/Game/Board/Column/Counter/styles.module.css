@@ -18,6 +18,35 @@
     border-radius: 100%;
     border: 6px solid white;
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: auto;
+}
+
+.redCounter{
+    content: url('./icons/counter-red-large.svg')
+}
+
+.yellowCounter{
+    content: url('./icons/counter-yellow-large.svg');
+}
+
+@media(max-width: 680px){
+    .container{
+        height: 34px;
+    }
+    .redCounter{
+        content: url('./icons/counter-red-small.svg');
+    }
+
+    .yellowCounter{
+        content: url('./icons/counter-yellow-small.svg');
+    }
+    .winningCircle{
+        width: 20px;
+        height: 20px;
+        top: 5px;
+    }
 }

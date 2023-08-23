@@ -4,21 +4,21 @@ import {motion} from 'framer-motion';
 import Counter from './Counter';
 import icons from './icons';
 import { useSelector, useDispatch } from 'react-redux';
+import useMediaQuery from '../../../Hooks/useMediaQuery';
 
 function Column({hoverColumn, handleEnter, id}) {
     const [counters, setCounters] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
-    const board = useSelector(state => state.board);
     const gameOver = useSelector(state => state.gameOver);
     const reset = useSelector(state => state.reset);
     const arrowRef = useRef();
     const columnRef = useRef();
     const dispatch = useDispatch();
+    const mobile = useMediaQuery('(max-width: 680px)');
 
     const handleAddCounter = () => {
         setCounters(counters + 1);
     }
-
 
     useEffect(() => {
         if(hoverColumn !== id) return;
@@ -39,8 +39,7 @@ function Column({hoverColumn, handleEnter, id}) {
         if(reset){
             setCounters(0);
             dispatch({type: 'cancel reset'});
-        }
-            
+        }   
     }, [reset])
 
     return(                

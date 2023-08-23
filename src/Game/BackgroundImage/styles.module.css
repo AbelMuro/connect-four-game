@@ -6,3 +6,9 @@
     margin: auto;
     z-index: var(--farthest);
 }
+
+@media(max-width: 680px){
+    .container{
+        height: 236px;
+    }
+}
