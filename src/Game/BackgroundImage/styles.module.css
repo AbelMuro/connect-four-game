@@ -1,6 +1,6 @@
 .container{
     width: 100%;
-    height: 240px;
+    min-height: 240px;
     border-radius: 60px 60px 0px 0px;
     background-color: #5C2DD5;
     margin: auto;
