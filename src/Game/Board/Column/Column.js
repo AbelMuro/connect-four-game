@@ -46,7 +46,7 @@ function Column({hoverColumn, handleEnter, id}) {
         columnRef.current.style.pointerEvents = 'none';
         setTimeout(() => {
             columnRef.current.style.pointerEvents = '';
-        },1600)
+        },2000)
     }, [])
 
     return(                
