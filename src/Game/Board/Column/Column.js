@@ -42,6 +42,13 @@ function Column({hoverColumn, handleEnter, id}) {
         }   
     }, [reset])
 
+    useEffect(() => {
+        columnRef.current.style.pointerEvents = 'none';
+        setTimeout(() => {
+            columnRef.current.style.pointerEvents = '';
+        },1600)
+    }, [])
+
     return(                
         <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter} ref={columnRef}>
             {hoverColumn === id && <motion.img className={styles.arrow} ref={arrowRef} layoutId='arrow'/>}
