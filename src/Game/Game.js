@@ -13,11 +13,11 @@ function Game() {
 
     return(
         <>
-        <main className={styles.container}>
-            <HeaderBar/>
-            <Board/>
-        </main>     
-        <BackgroundImage/>   
+            <main className={styles.container}>
+                <HeaderBar/>
+                <Board/>
+            </main>     
+            <BackgroundImage/>   
         </>
 
     )
