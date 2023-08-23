@@ -12,13 +12,13 @@ function Game() {
     }, [])
 
     return(
-        <div className={styles.grid}>
+        <>
             <main className={styles.container}>
                 <HeaderBar/>
                 <Board/>
             </main>     
             <BackgroundImage/>   
-        </div>
+        </>
 
     )
 }
