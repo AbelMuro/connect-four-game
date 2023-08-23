@@ -34,7 +34,6 @@ function HeaderBar() {
             e.target.style.backgroundColor = '#FFCE67';
             e.target.style.color = '#000000'
         }
-            
     }
 
     const handleLeave = (e) => {

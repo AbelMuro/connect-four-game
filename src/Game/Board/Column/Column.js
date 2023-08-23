@@ -53,15 +53,15 @@ function Column({hoverColumn, handleEnter, id}) {
         <div className={styles.columns} onMouseEnter={handleEnter} id={id} onClick={handleAddCounter} ref={columnRef}>
             {hoverColumn === id && <motion.img className={styles.arrow} ref={arrowRef} layoutId='arrow'/>}
             {counters >= 1 && 
-                <Counter column={id} row={5} initial={{y: -430}}/>}
+                <Counter column={id} row={5} initial={mobile ? {y: -230} : {y: -430}}/>}
             {counters >= 2 && 
-                <Counter column={id} row={4} initial={{y: -370}}/>}
+                <Counter column={id} row={4} initial={mobile ? {y: -190} : {y: -370}}/>}
             {counters >= 3 && 
-                <Counter column={id} row={3} initial={{y: -280}}/>}
+                <Counter column={id} row={3} initial={mobile ? {y: -150} : {y: -280}}/>}
             {counters >= 4 && 
-                <Counter column={id} row={2} initial={{y: -180}}/>}
+                <Counter column={id} row={2} initial={mobile ? {y: -110} : {y: -180}}/>}
             {counters >= 5 && 
-                <Counter column={id} row={1} initial={{y: -100}}/>}
+                <Counter column={id} row={1} initial={mobile ? {y: -70} : {y: -100}}/>}
             {counters >= 6 && 
                 <Counter column={id} row={0} initial={{y: -20}}/>}
         </div>

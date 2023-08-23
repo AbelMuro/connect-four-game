@@ -1,3 +1,4 @@
+
 .container{
     width: 1110px;
     display: flex;
@@ -21,6 +22,10 @@
 }
 
 @media(max-width: 680px){
+    .grid{
+        grid-template-rows: 700px 1fr;
+    }
+
     .container{
         margin-top: 50px;
         gap: 50px;
