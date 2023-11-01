@@ -48,22 +48,22 @@ function Timer() {
     }, [currentTurn])
 
 
-    return  currentTurn === 'player 1' ? 
+    return currentTurn === 'player 1' ? 
                 <motion.section className={styles.playerOne} variants={variants} initial='hidden' animate='show'>
                     <h1 className={styles.title}>
                         Player 1's turn
                     </h1>
                     <p className={styles.timer}>
-                        timer
+                        {timer}s
                     </p>
                 </motion.section> 
                 : 
                 <motion.section className={styles.playerTwo} variants={variants} initial='hidden' animate='show'>
                     <h1 className={styles.title}>
-                        Player 1's turn
+                        Player 2's turn
                     </h1>
                     <p className={styles.timer}>
-                        timer
+                        {timer}s
                     </p>
                 </motion.section>  
      

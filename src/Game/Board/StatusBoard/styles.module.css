@@ -1,0 +1,10 @@
+.container{
+    width: 191px;
+    height: 150px;   
+    position: absolute;
+    bottom: -110px;
+    left: 0;
+    right: 0;    
+    margin: auto;   
+    z-index: var(--close);     
+}
