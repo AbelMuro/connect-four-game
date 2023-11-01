@@ -7,6 +7,7 @@ import redCounter from './Board/Column/Counter/icons/counter-red-large.svg';
 import yellowCounter from './Board/Column/Counter/icons/counter-yellow-large.svg';
 import mobileRedCounter from './Board/Column/Counter/icons/counter-red-small.svg';
 import mobileYellowCounter from './Board/Column/Counter/icons/counter-yellow-small.svg';
+import playerBg from './Board/StatusBoard/Timer/images'
 
 function Game() {
 
@@ -21,6 +22,8 @@ function Game() {
             <img src={yellowCounter} style={{display: 'none'}}/>
             <img src={mobileRedCounter} style={{display: 'none'}}/>
             <img src={mobileYellowCounter} style={{display: 'none'}}/>
+            <img src={playerBg['playerOneBackground,']} style={{display: 'none'}}/>
+            <img src={playerBg['playerTwoBackground,']} style={{display: 'none'}}/>
             <main className={styles.container}>
                 <HeaderBar/>
                 <Board/>

@@ -48,7 +48,7 @@ function Timer() {
     }, [currentTurn])
 
 
-    return currentTurn === 'player 1' ? 
+    return  currentTurn === 'player 1' ? 
                 <motion.section className={styles.playerOne} variants={variants} initial='hidden' animate='show'>
                     <h1 className={styles.title}>
                         Player 1's turn

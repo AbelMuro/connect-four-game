@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './styles.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {motion} from 'framer-motion';
@@ -22,6 +22,14 @@ function DisplayWinner() {
         e.target.style.backgroundColor = ''
         e.target.style.color = '';
     }
+
+    useEffect(() => {
+        window.scrollBy({
+            top: 9999,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, [])
 
     return(
         <motion.div 
