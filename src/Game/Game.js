@@ -10,6 +10,11 @@ import mobileYellowCounter from './Board/Column/Counter/icons/counter-yellow-sma
 
 function Game() {
 
+    useEffect(() => {
+        const body = document.querySelector('body');
+        body.style.backgroundColor = '#7945FF';
+    }, [])
+
     return(
         <>
             <img src={redCounter} style={{display: 'none'}}/>                   {/* i load the svg files here to avoid any visual bugs*/}
