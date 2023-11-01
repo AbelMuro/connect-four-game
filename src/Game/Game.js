@@ -21,11 +21,14 @@ function Game() {
             <img src={yellowCounter} style={{display: 'none'}}/>
             <img src={mobileRedCounter} style={{display: 'none'}}/>
             <img src={mobileYellowCounter} style={{display: 'none'}}/>
-            <main className={styles.container}>
-                <HeaderBar/>
-                <Board/>
-            </main>     
-            <BackgroundImage/>   
+            <main className={styles.layout}>
+                <div className={styles.container}>
+                    <HeaderBar/>
+                    <Board/>
+                </div>     
+                <BackgroundImage/>                  
+            </main>
+ 
         </>
 
     )

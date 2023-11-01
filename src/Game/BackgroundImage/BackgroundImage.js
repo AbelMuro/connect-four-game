@@ -21,7 +21,9 @@ function BackgroundImage() {
             initial={{y: 100}}
             animate={{y: 0}}
             className={styles.container} 
-            ref={containerRef}></motion.div>
+            ref={containerRef}>
+                
+            </motion.div>
     )
 }
 

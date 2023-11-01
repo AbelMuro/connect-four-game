@@ -1,13 +1,7 @@
 .container{
     width: 100%;
-    min-height: 240px;
+    height: 200px;
     border-radius: 60px 60px 0px 0px;
     background-color: #5C2DD5;
     margin: auto;
-}
-
-@media(max-width: 680px){
-    .container{
-        height: 346px;
-    }
 }
