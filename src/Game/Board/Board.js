@@ -5,11 +5,9 @@ import StatusBoard from './StatusBoard';
 import styles from './styles.module.css';
 import Column from './Column';
 import {motion} from 'framer-motion';
-import useMediaQuery from '../../Hooks/useMediaQuery.js'
 
 function Board() {
     const [hoverColumn, setHoverColumn] = useState();
-    const mobile = useMediaQuery('(max-width: 680px)');
 
     const variants = {
         hidden: {

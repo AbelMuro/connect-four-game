@@ -9,6 +9,8 @@
 .board{
     width: 632px;
     height: 582px;
+    background-color: #7945FF;
+    border-radius: 50px;
     position: relative;
     display: grid;
     grid-template-columns: repeat(7, 70px);
