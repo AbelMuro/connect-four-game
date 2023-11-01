@@ -54,7 +54,7 @@ function Timer() {
                         Player 1's turn
                     </h1>
                     <p className={styles.timer}>
-                        {timer}s
+                        timer
                     </p>
                 </motion.section> 
                 : 
@@ -63,7 +63,7 @@ function Timer() {
                         Player 2's turn
                     </h1>
                     <p className={styles.timer}>
-                        {timer}s
+                        timer
                     </p>
                 </motion.section>  
      
