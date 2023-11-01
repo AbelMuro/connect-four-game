@@ -10,7 +10,6 @@ function Timer() {
     const pause = useSelector(state => state.pause);
     const containerRef = useRef();
     const timerRef = useRef();
-    const skipFirstRender = useRef(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -48,24 +47,26 @@ function Timer() {
         setTimer(0);            
     }, [currentTurn])
 
-    useEffect(() => {
-        containerRef.current.style.backgroundImage = currentTurn === 'player 1' ? 
-            `url(${backgroundImages.playerOneBackground})` :
-            `url(${backgroundImages.playerTwoBackground})`
 
-        containerRef.current.style.color = currentTurn === 'player 1' ? 'white' : 'black';
-    }, [currentTurn])
-
-    return(
-        <section className={styles.container} ref={containerRef}>
+    return currentTurn === 'player 1' ? 
+        <section className={styles.playerOne}>
             <h1 className={styles.title}>
-                {currentTurn === 'player 1' ? "Player 1's turn" : "Player 2's turn"}
+                Player 1's turn
+            </h1>
+            <p className={styles.timer}>
+                {timer}s
+            </p>
+        </section> 
+        : 
+        <section className={styles.playerTwo}>
+            <h1 className={styles.title}>
+                Player 2's turn
             </h1>
             <p className={styles.timer}>
                 {timer}s
             </p>
         </section>
-    )
+    
 }
 
 export default memo(Timer);
