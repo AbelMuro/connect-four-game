@@ -60,7 +60,7 @@ function Timer() {
                 : 
                 <motion.section className={styles.playerTwo} variants={variants} initial='hidden' animate='show'>
                     <h1 className={styles.title}>
-                        Player 2's turn
+                        Player 1's turn
                     </h1>
                     <p className={styles.timer}>
                         timer
