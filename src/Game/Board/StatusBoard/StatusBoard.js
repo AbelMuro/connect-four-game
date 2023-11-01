@@ -8,7 +8,6 @@ function StatusBoard() {
 
     return gameOver ? <DisplayWinner/> : <Timer/>
 
-    
 }
 
 export default StatusBoard;

@@ -1,14 +1,14 @@
 import React, {useState, useEffect, memo, useRef} from 'react';
 import styles from './styles.module.css';
-import backgroundImages from './images';
 import {useSelector, useDispatch} from 'react-redux';
+import {motion} from 'framer-motion';
+import {variants} from './Variants';
 
 function Timer() {
     const [timer, setTimer] = useState(0);
     const currentTurn = useSelector(state => state.currentTurn);
     const reset = useSelector(state => state.reset);
     const pause = useSelector(state => state.pause);
-    const containerRef = useRef();
     const timerRef = useRef();
     const dispatch = useDispatch();
 
@@ -49,23 +49,25 @@ function Timer() {
 
 
     return currentTurn === 'player 1' ? 
-        <section className={styles.playerOne}>
-            <h1 className={styles.title}>
-                Player 1's turn
-            </h1>
-            <p className={styles.timer}>
-                {timer}s
-            </p>
-        </section> 
-        : 
-        <section className={styles.playerTwo}>
-            <h1 className={styles.title}>
-                Player 2's turn
-            </h1>
-            <p className={styles.timer}>
-                {timer}s
-            </p>
-        </section>
+                <motion.section className={styles.playerOne} variants={variants} initial='hidden' animate='show'>
+                    <h1 className={styles.title}>
+                        Player 1's turn
+                    </h1>
+                    <p className={styles.timer}>
+                        {timer}s
+                    </p>
+                </motion.section> 
+                : 
+                <motion.section className={styles.playerTwo} variants={variants} initial='hidden' animate='show'>
+                    <h1 className={styles.title}>
+                        Player 2's turn
+                    </h1>
+                    <p className={styles.timer}>
+                        {timer}s
+                    </p>
+                </motion.section>  
+     
+
     
 }
 
