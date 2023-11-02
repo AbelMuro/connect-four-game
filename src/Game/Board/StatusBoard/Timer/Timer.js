@@ -9,6 +9,8 @@ function Timer() {
     const currentTurn = useSelector(state => state.currentTurn);
     const reset = useSelector(state => state.reset);
     const pause = useSelector(state => state.pause);
+    const playerOneRef = useRef();
+    const playerTwoRef = useRef();
     const timerRef = useRef();
     const dispatch = useDispatch();
 
@@ -47,28 +49,37 @@ function Timer() {
         setTimer(0);            
     }, [currentTurn])
 
+    useEffect(() => {
+        if(currentTurn === 'player 1'){
+            playerTwoRef.current.style.transform = '';
+            playerOneRef.current.style.transform = 'scale(1)'
+        }
+        else{
+            playerOneRef.current.style.transform = ''
+            playerTwoRef.current.style.transform = 'scale(1)';  
+        }
 
-    return currentTurn === 'player 1' ? 
-                <motion.section className={styles.playerOne} variants={variants} initial='hidden' animate='show'>
+    },[currentTurn])
+
+
+    return <>
+                <section className={styles.playerOne} ref={playerOneRef}>
                     <h1 className={styles.title}>
                         Player 1's turn
                     </h1>
                     <p className={styles.timer}>
                         {timer}s
                     </p>
-                </motion.section> 
-                : 
-                <motion.section className={styles.playerTwo} variants={variants} initial='hidden' animate='show'>
+                </section> 
+                <section className={styles.playerTwo} ref={playerTwoRef}>
                     <h1 className={styles.title}>
                         Player 2's turn
                     </h1>
                     <p className={styles.timer}>
                         {timer}s
                     </p>
-                </motion.section>  
-     
-
-    
+                </section>      
+        </>
 }
 
 export default memo(Timer);
