@@ -100,30 +100,30 @@ function HeaderBar() {
 
     return(
         <>
-            <motion.header 
+            <header 
                 className={styles.container} 
                 initial='hidden' 
                 animate='show'
                 transition={{staggerChildren: 0.6}}
                 >
-                <motion.button 
+                <button 
                     className={styles.menuButton} 
                     onClick={handleMenu} 
                     variants={variants}
                     onMouseEnter={handleEnter}
                     onMouseLeave={handleLeave}>
                     MENU
-                </motion.button>
-                <motion.img className={styles.logo} src={logo} variants={variants}/>
-                <motion.button 
+                </button>
+                <img className={styles.logo} src={logo} variants={variants}/>
+                <button 
                     className={styles.restartButton} 
                     onClick={handleRestart} 
                     variants={variants}
                     onMouseEnter={handleEnter}
                     onMouseLeave={handleLeave}>
                     Restart
-                </motion.button>
-            </motion.header>    
+                </button>
+            </header>    
             <div className={styles.overlay} ref={overlayRef}>
                 <dialog open={true} className={styles.dialog} ref={dialogRef}>
                     <h1 className={styles.title}>

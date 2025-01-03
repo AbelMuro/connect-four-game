@@ -40,9 +40,9 @@ function Board() {
     }
 
     return(
-        <motion.div className={styles.container} initial={'hidden'} animate={'show'} transition={{staggerChildren: 0.6}}>
+        <div className={styles.container} initial={'hidden'} animate={'show'} transition={{staggerChildren: 0.6}}>
             <PlayerOneScore/>
-            <motion.div layout className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter} variants={variants}>
+            <div layout className={styles.board} onMouseLeave={handleLeave} onClick={handleDropCounter}>
                 <img className={styles.layer}/>
                 <img className={styles.layer}/>
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={0} />
@@ -53,9 +53,9 @@ function Board() {
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={5} />
                 <Column hoverColumn={hoverColumn} handleEnter={handleEnter} id={6} />
                 <StatusBoard />
-            </motion.div>
+            </div>
             <PlayerTwoScore/>
-        </motion.div>
+        </div>
     )
 }
 
